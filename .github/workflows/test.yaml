@@ -5,11 +5,11 @@ on:
       - main
 
 jobs:
-  test:
+  test_and_build:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
-        node-version: [ 18.x, 20.x, 23.x ]
+        node-version: [20.x, 23.x ]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -24,3 +24,5 @@ jobs:
         run: npm ci
       - name: Run unit tests
         run: npm test
+      - name: Build project
+        run: npm run build
