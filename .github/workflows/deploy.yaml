@@ -1,0 +1,23 @@
+name: Next.js CI/CD Test
+on:
+  push:
+    branches:
+      - main
+jobs:
+  sync-files:
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          aws-region: 'us-east-2'
+      - name: Build project
+        run: npm run build
+      - run: |
+          aws s3 sync .next/ s3://pipeline-sample --delete
+    runs-on: ubuntu-latest
