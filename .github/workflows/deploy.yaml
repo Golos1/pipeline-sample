@@ -17,7 +17,10 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE }}
           aws-region: 'us-east-2'
       - name: Build project
-        run: npm run build
+
+        run: |
+          npm ci
+          npm run build
       - run: |
           aws s3 sync .next/ s3://pipeline-sample --delete
     runs-on: ubuntu-latest
