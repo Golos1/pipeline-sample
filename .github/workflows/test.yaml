@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  test:
+  test_and_build:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
@@ -24,3 +24,5 @@ jobs:
         run: npm ci
       - name: Run unit tests
         run: npm test
+      - name: Build project
+        run: npm run build
