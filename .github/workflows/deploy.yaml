@@ -22,5 +22,5 @@ jobs:
           npm ci
           npm run build
       - run: |
-          aws s3 sync .next/ s3://pipeline-sample --delete
+          aws s3 sync .next/ s3://pipeline-sample-genspark --delete
     runs-on: ubuntu-latest
