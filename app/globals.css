@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +23,24 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.error-banner{
+  width: fit-content;
+  height: fit-content;
+  background-color: lightpink;
+  color: darkred;
+}
+label{
+  color: yellow;
+}
+.filter-bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.product-row{
+  margin-bottom: 2vh;
+  background-color: lightgreen;
+  color: darkgreen;
 }
