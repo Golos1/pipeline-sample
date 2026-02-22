@@ -1,11 +1,8 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:23-alpine'
-            args '-p 3000:3000'
-       }
- }
-
+    agent any
+    tools {
+        nodejs 'Default'
+    }
     stages {
         stage('Checkout') {
             steps {
