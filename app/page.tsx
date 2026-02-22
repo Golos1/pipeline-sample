@@ -7,6 +7,7 @@ export default function Home() {
     product: string;
     price: number;
     weight: number;
+    in_stock: number;
   }
   const [data, setData] = useState<Product[]>([]);
   const[minPrice, setMinPrice] = useState<number>(0);
@@ -17,12 +18,12 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const sampleData = [
-    {product: 'example1', price: 10, weight: 3},
-    {product: 'example2', price: 8, weight: 5.6},
-    {product: 'example3', price: 15, weight: 8.3},
-    {product: 'example4', price: 23, weight: 7.1},
-    {product: 'example5', price: 11, weight: 2.4},
-    {product: 'example6', price: 4, weight: 11.5}
+    {product: 'example1', price: 10, weight: 3, in_stock: 11},
+    {product: 'example2', price: 8, weight: 5.6, in_stock: 24},
+    {product: 'example3', price: 15, weight: 8.3, in_stock: 3},
+    {product: 'example4', price: 23, weight: 7.1, in_stock: 55},
+    {product: 'example5', price: 11, weight: 2.4, in_stock: 17},
+    {product: 'example6', price: 4, weight: 11.5, in_stock: 9}
   ];
   const handleReload = () => {
     setLoading(true);
@@ -98,7 +99,7 @@ export default function Home() {
           {data?.map((item: Product, index) => (
               item.weight > minWeight && item.price > minPrice && item.price < maxPrice && item.weight < maxWeight?
                   <li className={'product-row'} key={index}>
-                    Product: {item.product}, Price: ${item.price}, Weight: ${item.weight}kg
+                    Product: {item.product}, Price: ${item.price}, Weight: ${item.weight}kg, # In Stock: {item.in_stock}
                   </li> : null
           ))}
         </ol>
